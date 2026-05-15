@@ -5,7 +5,7 @@ async function handleAuth() {
   const errorMsg = document.getElementById('error');
 
   const loginOverlay = document.getElementById("loginOverlay");
-const BtnRegister = document.getElementById("btnRegister");
+const loginForm = document.getElementById("loginForm");
 
   if (!email || !password) {
     errorMsg.innerText = "Veuillez remplir tous les champs.";
