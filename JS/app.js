@@ -1,4 +1,4 @@
-<script>
+
 async function handleAuth() {
   const email = document.getElementById('emailInput').value;
   const password = document.getElementById('passInput').value;
@@ -49,4 +49,4 @@ if (data.session) {
 }
         }
     }
-</script>
+
