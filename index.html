@@ -206,11 +206,11 @@
     }
 
 
-    function handleAuth() {
+        async function handleAuth() {
         const email = document.getElementById('emailInput').value;
         const password = document.getElementById('passInput').value;
         const errorMsg = document.getElementById('error');
-
+       
         if (!email || !password) {
             errorMsg.innerText = "Veuillez remplir tous les champs.";
             errorMsg.style.display = 'block';
@@ -246,7 +246,6 @@
 
 <body>
   <div id="loginOverlay">
-    <div id="loginOverlay">
     <div id="loginForm">
         <h2 id="formTitle">Se connecter</h2>
         <input type="email" id="emailInput" placeholder="Email">
@@ -262,7 +261,7 @@
         <h2>Se connecter</h2>
         <input type="email" id="emailInput" placeholder="Inserer votre email">
         <input type="password" id="passInput" placeholder="Mot de passe">
-        <button onclick="checkLogin()">Connecter</button>
+        <button id="submitBtn" onclick="handleAuth()">Connecter</button>
         <div id="error">❌ Wrong email or password!</div>
     </div>
 </div>
