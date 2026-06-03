@@ -181,10 +181,14 @@
     }
   </style>
 </head>
-<script>
+<script> 
+    const SUPABASE_URL = "https://slfvidffqautcfklxgya.supabase.co/rest/v1/";
+    const SUPABASE_ANON_KEY = "sb_publishable_nNinSqNHFfbCwN6qflsLrA_BIH-sqcw";
+    const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
     let isSignUpMode = false;
 
-
+    
     function toggleMode() {
         isSignUpMode = !isSignUpMode;
         const title = document.getElementById('formTitle');
@@ -200,17 +204,19 @@
             toggle.innerText = "Déjà un compte ? Se connecter";
         } else {
             title.innerText = "Se connecter";
-            btn.innerText = "Connecter";
+            btn.innerText = "Se connecter";
             toggle.innerText = "Pas de compte ? S'inscrire";
         }
     }
 
-
-        async function handleAuth() {
+    
+    async function handleAuth() {
         const email = document.getElementById('emailInput').value;
         const password = document.getElementById('passInput').value;
         const errorMsg = document.getElementById('error');
        
+        errorMsg.style.display = 'none';
+
         if (!email || !password) {
             errorMsg.innerText = "Veuillez remplir tous les champs.";
             errorMsg.style.display = 'block';
@@ -218,24 +224,49 @@
         }
 
         if (isSignUpMode) {
+          
+            const { data, error } = await supabase.auth.signUp({
+                email: email,
+                password: password
+            });
 
-
-            alert("Compte créé ! Vous pouvez maintenant vous connecter.");
+            if (error) {
+                errorMsg.innerText = "Erreur d'inscription : " + error.message;
+                errorMsg.style.display = 'block';
+            } else {
+                alert("Compte créé ! Vérifiez vos e-mails si la confirmation est activée.");
+                toggleMode();
+            }
+        } else {
+           
             const { data, error } = await supabase.auth.signInWithPassword({
-    email: email,
-    password: password
-  });
+                email: email,
+                password: password
+            });
 
+            if (error) {
+                errorMsg.innerText = "Erreur : " + error.message;
+                errorMsg.style.display = 'block';
+            } else {
+                loginSuccess();
+            }
+        }
+    }
+
+   
     function loginSuccess() {
         document.getElementById('loginOverlay').style.display = 'none';
         document.getElementById('mainContent').style.display = 'block';
         localStorage.setItem('isLoggedIn', 'true');
     }
 
-    function logout() {
+
+    async function logout() {
+        await supabase.auth.signOut();
         localStorage.removeItem('isLoggedIn');
         location.reload();
     }
+
 
     window.onload = function() {
         if (localStorage.getItem('isLoggedIn') === 'true') {
