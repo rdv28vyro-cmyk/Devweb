@@ -4,8 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Home</title>
-    <link rel="stylesheet" href="css/style.css" />
-<link rel="stylesheet" href="css/home.css" />
+  <link rel="stylesheet" href="CSS/style.css" />
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script type="module" src="JS/app.js" defer></script>
 </head>
@@ -23,10 +22,13 @@
 
   <div id="mainContent" class="hidden">
     <div class="topnav" id="myTopnav">
-      <a href="Home.html">Home</a>
+      <a href="index.html" class="active">Home</a>
       <a href="HTML/À propos.html">À propos</a>
       <a href="HTML/Contact.html">Contact</a>
       <a href="HTML/Sources.html">Sources</a>
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+      </a>
     </div>
 
     <div class="sidebar">
@@ -40,7 +42,7 @@
       <div class="section-box">
         <div class="title">Siteweb</div>
         <div class="fixed-text">Vytas Rosales</div>
-        <img src="https://cdn-icons-png.flaticon.com/512/3276/3276535.png" alt="Vytas Icon">
+        <img src="https://cdn-icons-png.flaticon.com/512/3276/3276535.png" alt="Vytas Icon" />
         <div class="about-me">
           Bonjour je m'appelle Vytas, je suis un étudiant à l'école secondaire
           <a href="https://julesverne.csf.bc.ca">Jules-Verne</a>.<br />
@@ -52,15 +54,29 @@
       <div class="section-box">
         <h2 id="section2">Mes Passes Temps</h2>
         <div class="hobbies-list">
-          <a href="html/Guitare.html"><img src="https://www.washburn.com/wp-content/uploads/2019/01/BTSC56SCE-D-U-front.png" alt="Guitare" /></a>
-          <a href="html/Cadets.html"><img src="https://upload.wikimedia.org/wikipedia/commons/2/24/RCACC_Badge.svg" alt="Cadets" /></a>
-          <a href="html/Karate.html"><img src="https://freesvg.org/img/karateguy.png" alt="Karate" /></a>
+          <a href="HTML/Guitare.html">
+            <img src="https://www.washburn.com/wp-content/uploads/2019/01/BTSC56SCE-D-U-front.png" alt="Guitare" />
+          </a>
+          <a href="HTML/Cadets.html">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/RCACC_Badge.svg" alt="Cadets" />
+          </a>
+          <a href="HTML/Karate.html">
+            <img src="https://freesvg.org/img/karateguy.png" alt="Karate" />
+          </a>
         </div>
       </div>
 
       <div class="section-box">
         <h2 id="section3">Ma Famille</h2>
-        <p class="family-text">Ma famille se compose de moi, ma sœur, ma mère, mon père et deux chats de compagnie.</p>
+        <p class="family-text">
+          Ma famille se compose de moi, ma sœur, ma mère, mon père et deux chats de propriété.<br />
+          Je m’appelle Vytas Javier Rosales, né en août 2010 à Vancouver.<br />
+          Ma mère, Maria Térésa Javier, est née dans les îles des Philippines.<br />
+          Étant la plus jeune de ses quatre frères et sœurs, dès un jeune âge, toute leur famille est venue s’installer sur une île au Canada près de Vancouver Island où ma mère a fini ses études secondaires.<br />
+          Mon père, Roberto Rosales, est né au Venezuela et y a vécu toute sa jeunesse avant de partir pour le Canada où il a terminé ses études à l’université UBC.<br />
+          Ma sœur Sahara, née ici, a diplômé de Jules Verne et poursuit maintenant ses études à l’école McGill.<br />
+          Mes deux chats, Minou et Dash. Minou est un chat bicolore, noir et blanc, qui aime dormir. Dash est un chat orange plein d’énergie.
+        </p>
       </div>
 
       <div class="section-box">
@@ -71,5 +87,16 @@
       <button id="logoutBtn" class="logout-btn">Logout</button>
     </div>
   </div>
+
+  <script>
+    function myFunction() {
+      var x = document.getElementById("myTopnav");
+      if (x.className === "topnav") {
+        x.className += " responsive";
+      } else {
+        x.className = "topnav";
+      }
+    }
+  </script>
 </body>
 </html>
